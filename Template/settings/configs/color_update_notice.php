@@ -1,5 +1,6 @@
 <?php if (!empty($color_diffs)):  ?>
 <form method="post" action="<?= $this->url->href('PluginConfigsController', 'dismiss', array('plugin' => 'ThemeRevision')) ?>">
+    <?= $this->form->csrf() ?>
     <fieldset>
         <p class="alert alert-warning"><b><?= t('Notice') ?></b><br><?= t('Some colors have been changed after last upgrading.') ?></p>
         <?php foreach($color_diffs as $paletteName=>$paletteValue):  ?>

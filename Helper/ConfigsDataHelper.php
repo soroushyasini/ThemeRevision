@@ -104,7 +104,16 @@ class ConfigsDataHelper extends BaseHelper
         $mergedConfigs = $defConfigs;
         
         if (is_array($oldConfigs)){
-            $mergedConfigs = array_merge($defConfigs, array_diff_key($oldConfigs, ["light_palette" => "", "dark_palette" => ""]));
+            // Keep administrator customizations while adding any newly
+            // introduced settings and palette entries from the defaults.
+            $mergedConfigs = array_replace_recursive($defConfigs, $oldConfigs);
+            $mergedConfigs['version'] = $defConfigs['version'];
+
+            // Migrate the former low-contrast default while preserving any
+            // opacity value that an administrator explicitly customized.
+            if (isset($oldConfigs['task_footer_opacity']) && abs(floatval($oldConfigs['task_footer_opacity']) - 0.08) < 0.001){
+                $mergedConfigs['task_footer_opacity'] = $defConfigs['task_footer_opacity'];
+            }
         }
 
         return $mergedConfigs;

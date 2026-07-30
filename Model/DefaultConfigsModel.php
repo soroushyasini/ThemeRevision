@@ -5,7 +5,7 @@ namespace Kanboard\Plugin\ThemeRevision\Model;
 class DefaultConfigsModel
 {
     private $default_Configs_Schema = array(
-        'version'                           => array('default' => '20230306v1'),
+        'version'                           => array('default' => '20260730v2'),
 
         // Development mode will introduce raw CSS files for easier customization and minify automatically after switching back. 
         // Make sure the "Asset" folder in plugin's root directory is WRITABLE and EXECUTABLE before switching !
@@ -67,10 +67,10 @@ class DefaultConfigsModel
         ),
 
         // The opacity of the above information.
-        'task_footer_opacity' => array('default' => 0.08),
+        'task_footer_opacity' => array('default' => 0.68),
 
         // The corner radius for all elements.
-        'corner_radius' => array('default' => '4px'),
+        'corner_radius' => array('default' => '10px'),
         
         // Color Palettes
         // *-prim (primary):      button background, link, selected, alert foreground, helps or hints ...

@@ -13,7 +13,7 @@
     <?php endif ?>
 
     <!-- Configs -->
-    <form method="post" action="<?= $this->url->href('PluginConfigsController', 'save', array('plugin' => 'ThemeRevision')) ?>">
+    <form class="tr-settings-form" method="post" action="<?= $this->url->href('PluginConfigsController', 'save', array('plugin' => 'ThemeRevision')) ?>">
         <?= $this->form->csrf() ?>
         <!-- Color Scheme -->
         <?= $this->render('ThemeRevision:settings/configs/color_scheme', array('configs' => $configs)) ?>
@@ -49,11 +49,12 @@
         <?= $this->render('ThemeRevision:settings/configs/mode', array('configs' => $configs)) ?>
         
         <!-- Save -->
-        <p><input type="submit" class="btn btn-blue" value="<?= t('Save') ?>"></p>
+        <p class="tr-settings-actions"><input type="submit" class="btn btn-blue" value="<?= t('Save') ?>"></p>
     </form>
     
     <!-- Reset -->
-    <form method="post" action="<?= $this->url->href('PluginConfigsController', 'reset', array('plugin' => 'ThemeRevision')) ?>">
+    <form class="tr-settings-reset" method="post" action="<?= $this->url->href('PluginConfigsController', 'reset', array('plugin' => 'ThemeRevision')) ?>">
+        <?= $this->form->csrf() ?>
         <fieldset>
             <legend><?= t('Reset Configs') ?></legend>
             <input type="submit" class="btn btn-red" value="<?= t('Reset') ?>"> 
@@ -63,14 +64,14 @@
     <!-- init color pickers -->
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function(event){
-            if ($){
-                $(".tr-color-picker > input[type='text']").spectrum({
+            if (typeof jQuery !== "undefined"){
+                jQuery(".tr-color-picker > input[type='text']").spectrum({
                     preferredFormat: "rgb",
                     showInput: true,
                     showAlpha: true
                 });
-                $(".overwrite-checkbox").change(function(event) {
-                    $(event.target).val($(event.target).is(':checked')) 
+                jQuery(".overwrite-checkbox").change(function(event) {
+                    jQuery(event.target).val(jQuery(event.target).is(':checked'));
                 });
             }
         });

@@ -13,12 +13,14 @@ ThemeRevision is a task-first and high-quality theme for [Kanboard](https://gith
 
 ## Features
 #### Task-first
-* ThemeRivision has been trying to create a high-quality but minimalist UI that helps you focus on your tasks.
+* ThemeRevision provides a high-quality, minimalist UI that helps you focus on your tasks.
 * Provide support for syntax highlighting.
 * More Search boxes. Display a search box in a drop-down menu automatically if items are more than 25.
 
 #### Better mobile experiences
 * Modern mobile application's interactive behaviour. [screenshot1](Screenshots/10.png) [screenshot2](Screenshots/11.png)
+* Accessible navigation with keyboard support, visible focus states, and reduced-motion preferences.
+* First-class right-to-left layout support for Persian, Arabic, Hebrew, and other RTL languages.
 
 #### Common plugins' compatibilities
 * Calendar / Gantt / Group_assign / MarkdownPlus / MetaMagic / Table View ...
@@ -34,6 +36,11 @@ ThemeRevision is a task-first and high-quality theme for [Kanboard](https://gith
 * Switchable icon packages, _Google Material_ (default) and _Font Awesome_.
 * Structured CSS files, easy to locate elements.  
 * Utilize "rem" as the global measuring unit.
+
+#### Modern design system
+* Responsive typography, spacing, surfaces, elevation, and focus tokens.
+* Refined task cards, navigation, forms, tables, dropdowns, modals, and settings.
+* Touch-friendly controls and mobile safe-area support.
 
 ## Installation
 * Install from the Kanboard plugin manager directly.  

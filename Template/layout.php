@@ -1,8 +1,14 @@
+<?php
+$documentLanguage = $this->app->jsLang();
+$languageCode = strtolower(str_replace('-', '_', $documentLanguage));
+$rtlLanguages = array('ar', 'arc', 'ckb', 'dv', 'fa', 'he', 'ku', 'ps', 'sd', 'ug', 'ur', 'yi');
+$documentDirection = in_array(explode('_', $languageCode)[0], $rtlLanguages, true) ? 'rtl' : 'ltr';
+?>
 <!DOCTYPE html>
-<html lang="<?= $this->app->jsLang() ?>">
+<html lang="<?= $this->text->e($documentLanguage) ?>" dir="<?= $documentDirection ?>">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="robots" content="noindex,nofollow">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

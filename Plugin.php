@@ -84,11 +84,11 @@ class Plugin extends Base
 	}
 
 	public function getPluginVersion() { 	 
-		return '1.1.12'; 
+		return '1.2.0';
 	}
 
 	public function getPluginDescription() { 
-		return "A task-first and high quality theme for Kanboard. It's aimed at better mobile experiences, common plugins' compatibilities, and customization friendly."; 
+		return "A modern, accessible, task-first Kanboard theme with responsive, dark-mode, and RTL support.";
 	}
 	
 	public function getPluginHomepage() { 	 

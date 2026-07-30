@@ -26,16 +26,15 @@ class ModeSwitchHelper extends BaseHelper
         '/Asset/dev/css/modal.css',
         '/Asset/dev/css/markdown.css',
         '/Asset/dev/css/other.css',
-        '/Asset/dev/css/break-points.css'
+        '/Asset/dev/css/break-points.css',
+        '/Asset/dev/css/modern.css'
     );
 
     public function productionMode(){
         $prdCSSFile = $this->getPluginPath().$this->prdCSSFile;
 		
-        if(!file_exists($prdCSSFile)){
-            $file = fopen($prdCSSFile, "w");
-            fwrite($file, $this->minifyCSS());
-            fclose($file);
+        if($this->shouldBuildProductionCSS($prdCSSFile)){
+            file_put_contents($prdCSSFile, $this->minifyCSS(), LOCK_EX);
         }
         $this->getPlugin()->hook->on('template:layout:css', array('template' => 'plugins/ThemeRevision'.$this->prdCSSFile));
     }
@@ -53,9 +52,23 @@ class ModeSwitchHelper extends BaseHelper
     }
 
     private function getPluginPath(){
-    	$arr = explode("/", __DIR__);
-    	$arr = array_slice($arr, 0, -1);
-    	return implode("/", $arr);
+        return dirname(__DIR__);
+    }
+
+    private function shouldBuildProductionCSS($prdCSSFile){
+        if (!file_exists($prdCSSFile)){
+            return true;
+        }
+
+        $productionModifiedAt = filemtime($prdCSSFile);
+        foreach ($this->devCSSFiles as $value){
+            $sourceFile = $this->getPluginPath().$value;
+            if (file_exists($sourceFile) && filemtime($sourceFile) > $productionModifiedAt){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private function getAllCSSContents(){

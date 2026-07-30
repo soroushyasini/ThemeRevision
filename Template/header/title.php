@@ -1,6 +1,6 @@
 <h1>
     <span class="logo">
-        <?= $this->url->link('<img src="'.$this->url->dir().'assets/img/favicon.png">', 'DashboardController', 'show', array(), false, '', t('Dashboard')) ?>
+        <?= $this->url->link('<img src="'.$this->url->dir().'assets/img/favicon.png" alt="">', 'DashboardController', 'show', array(), false, '', t('Dashboard')) ?>
     </span>
     <span class="title">
         <?php if (! empty($project) && ! empty($task)): ?>
