@@ -553,13 +553,22 @@ body.TR #board th:last-child {
 	padding-inline-end: 0;
 }
 
-body.TR .board-column-title {
-	display: inline-flex;
+body.TR #board .board-column-expanded-header {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
 	align-items: center;
 	gap: var(--tr-space-2);
 }
 
-body.TR .board-column-header-task-count {
+body.TR .board-column-title {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--tr-space-2);
+	min-width: 0;
+}
+
+body.TR #board .board-column-collapsed .board-column-header-task-count,
+body.TR #board .board-swimlane-header .board-column-header-task-count {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -570,6 +579,39 @@ body.TR .board-column-header-task-count {
 	background: var(--tr-surface);
 	color: var(--tr-text-muted);
 	font-size: .78rem;
+	box-shadow: var(--style-shadow-light);
+}
+
+/* Kanboard keeps this wrapper in the DOM even when every optional statistic is
+ * disabled. Keep the wrapper visual-free and turn only real values into badges. */
+body.TR #board .board-column-expanded-header > .board-column-header-task-count {
+	display: inline-flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: var(--tr-space-1);
+	min-width: 0;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	box-shadow: none;
+}
+
+body.TR #board .board-column-expanded-header > .board-column-header-task-count:not(:has(> *)) {
+	display: none;
+}
+
+body.TR #board .board-column-expanded-header > .board-column-header-task-count > span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 1.65rem;
+	padding: 0 .45rem;
+	border-radius: 999px;
+	background: var(--tr-surface);
+	color: var(--tr-text-muted);
+	font-size: .78rem;
+	white-space: nowrap;
 	box-shadow: var(--style-shadow-light);
 }
 
