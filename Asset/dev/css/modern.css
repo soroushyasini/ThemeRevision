@@ -758,7 +758,51 @@ body.TR .task-board:focus-within .task-board-footer {
 }
 
 body.TR .task-board-icons {
+	opacity: 1 !important;
+	color: var(--tr-text);
 	transition: opacity 140ms ease;
+}
+
+body.TR #board .task-board-expanded .task-board-header > a.js-modal-large {
+	display: inline-flex;
+	flex: 0 0 2rem;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+	margin: 0 0 var(--tr-space-2);
+	padding: 0;
+	border: 1px solid color-mix(in srgb, var(--color-brand-prim) 20%, var(--tr-border));
+	border-radius: 999px;
+	background: var(--tr-brand-soft);
+	color: var(--color-brand-prim);
+	line-height: 1;
+	transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease, transform 140ms ease;
+}
+
+body.TR #board .task-board-expanded .task-board-header > a.js-modal-large i.fa {
+	margin: 0;
+	color: inherit;
+	font-size: .95rem;
+	opacity: 1;
+}
+
+body.TR #board .task-board-expanded .task-board-header > a.js-modal-large:hover,
+body.TR #board .task-board-expanded .task-board-header > a.js-modal-large:focus-visible {
+	border-color: var(--color-brand-prim);
+	background: var(--color-brand-prim);
+	color: var(--color-brand-cont);
+	text-decoration: none;
+	transform: translateY(-1px);
+}
+
+body.TR #board .task-board-expanded .task-board-header > a.js-modal-large:focus-visible {
+	outline: 0;
+	box-shadow: var(--tr-focus-ring);
+}
+
+body.TR #board .task-board-expanded .task-board-header > a.js-modal-large:active {
+	transform: translateY(0);
 }
 
 body.TR .board-task-list {
@@ -777,10 +821,6 @@ body.TR .draggable-placeholder {
 	border: 2px dashed var(--color-brand-prim);
 	border-radius: var(--tr-radius-md);
 	background: var(--tr-brand-soft);
-}
-
-body.TR .task-board-expanded .task-board-header > a i.fa {
-	opacity: .55;
 }
 
 body.TR #board .board-add-icon {

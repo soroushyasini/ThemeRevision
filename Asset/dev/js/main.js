@@ -18,6 +18,7 @@
 
         document.body.classList.add("TR");
         enhanceLogo();
+        enhanceBoardEditActions();
         initMenu("section.sidebar-container > .sidebar");
         enhanceMetaMagik();
 
@@ -36,6 +37,32 @@
             logoLink.textContent = "";
             logoLink.appendChild(image);
         }
+    }
+
+    function enhanceBoardEditActions() {
+        var editActions = document.querySelectorAll(".task-board-expanded .task-board-header > a.js-modal-large");
+
+        editActions.forEach(function (editAction) {
+            if (editAction.getAttribute("aria-label")) {
+                return;
+            }
+
+            var href = editAction.getAttribute("href");
+            var menuLinks = editAction.parentNode.querySelectorAll(".dropdown li a");
+            var matchingMenuLink = Array.prototype.find.call(menuLinks, function (menuLink) {
+                return menuLink.getAttribute("href") === href;
+            });
+
+            if (!matchingMenuLink) {
+                return;
+            }
+
+            var label = matchingMenuLink.textContent.trim();
+            if (label) {
+                editAction.setAttribute("aria-label", label);
+                editAction.setAttribute("title", label);
+            }
+        });
     }
 
     function enhanceMetaMagik() {
