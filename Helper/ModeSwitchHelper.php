@@ -33,7 +33,7 @@ class ModeSwitchHelper extends BaseHelper
     public function productionMode(){
         $prdCSSFile = $this->getPluginPath().$this->prdCSSFile;
 		
-        if($this->shouldBuildProductionCSS($prdCSSFile)){
+        if($this->shouldBuildProductionCSS($prdCSSFile) && is_writable(dirname($prdCSSFile))){
             file_put_contents($prdCSSFile, $this->minifyCSS(), LOCK_EX);
         }
         $this->getPlugin()->hook->on('template:layout:css', array('template' => 'plugins/ThemeRevision'.$this->prdCSSFile));

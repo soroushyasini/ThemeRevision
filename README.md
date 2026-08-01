@@ -49,6 +49,31 @@ ThemeRevision is a task-first and high-quality theme for [Kanboard](https://gith
 * ***Your own logo?***  
 ThemeRevision utilize the file `favicon.png` in `your_kanboard_root/assets/img` as the head logo, replace it if needed.
 
+### Docker Compose bind mount
+
+For a Git-based deployment, clone this repository beside `docker-compose.yml`:
+
+```shell
+cd /opt/kanboard
+git clone https://github.com/greyaz/ThemeRevision.git ThemeRevision
+```
+
+Keep the named plugins volume and add a read-only bind mount for ThemeRevision:
+
+```yaml
+services:
+  app:
+    volumes:
+      - data:/var/www/app/data
+      - plugins:/var/www/app/plugins
+      - ./ThemeRevision:/var/www/app/plugins/ThemeRevision:ro
+      - certs:/etc/nginx/ssl
+```
+
+Apply the mount once with `docker compose up -d --force-recreate app`. Future releases can be deployed from `/opt/kanboard/ThemeRevision` with `git pull --ff-only`; static PHP, CSS, and JavaScript changes are visible through the bind mount without rebuilding the image. If PHP OPcache is configured to ignore file timestamps, restart the app afterward with `docker compose restart app`.
+
+The read-only mount is recommended for production. To use ThemeRevision's development mode, remove `:ro`, recreate the app container, and ensure the container process can write to `Asset`.
+
 ## Upgrading
 * ***I have customized CSS files***  
 Back up those CSS files you've customized in the folder `Asset/dev` before upgrading.
