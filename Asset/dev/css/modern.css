@@ -36,6 +36,8 @@
 	--tr-text-muted: color-mix(in srgb, var(--color-greyscale-1) 68%, transparent);
 	--tr-text-faint: color-mix(in srgb, var(--color-greyscale-1) 48%, transparent);
 	--tr-brand-soft: color-mix(in srgb, var(--color-brand-prim) 12%, var(--color-greyscale-6));
+	--tr-company-lime: #95c23d;
+	--tr-company-navy: #12223b;
 }
 
 html {
@@ -292,10 +294,10 @@ body.TR .project-header > .dropdown-component > .dropdown > .action-menu {
 	gap: var(--tr-space-2);
 	min-height: var(--tr-control-height);
 	padding: .65rem .8rem;
-	border: 1px solid color-mix(in srgb, var(--color-brand-prim) 28%, var(--tr-border));
+	border: 1px solid var(--tr-company-lime);
 	border-radius: var(--tr-radius-sm);
-	background: var(--tr-brand-soft);
-	color: var(--color-brand-prim);
+	background: var(--tr-company-lime);
+	color: var(--tr-company-navy);
 	font-weight: 700;
 	line-height: 1.2;
 	box-shadow: none;
@@ -321,9 +323,9 @@ body.TR .project-header > .dropdown-component > .dropdown > .action-menu .fa-car
 body.TR .project-header > .dropdown-component > .dropdown > .action-menu:hover,
 body.TR .project-header > .dropdown-component > .dropdown > .action-menu:focus-visible,
 body.TR .project-header > .dropdown-component > .dropdown > .action-menu.active-dropdown-menu {
-	border-color: var(--color-brand-prim);
-	background: var(--color-brand-prim);
-	color: var(--color-brand-cont);
+	border-color: color-mix(in srgb, var(--tr-company-lime) 75%, var(--tr-company-navy));
+	background: color-mix(in srgb, var(--tr-company-lime) 88%, white);
+	color: var(--tr-company-navy);
 }
 
 body.TR .project-header > .views-switcher-component {
@@ -387,8 +389,8 @@ body.TR .project-header .views > li > a:focus-visible {
 body.TR .project-header .views > li.active > a,
 body.TR .project-header .views > li.active > a:hover,
 body.TR .project-header .views > li.active > a:focus-visible {
-	background: var(--color-brand-prim);
-	color: var(--color-brand-cont);
+	background: var(--tr-company-lime);
+	color: var(--tr-company-navy);
 	box-shadow: var(--style-shadow-light);
 }
 

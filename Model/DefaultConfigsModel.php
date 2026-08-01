@@ -5,7 +5,7 @@ namespace Kanboard\Plugin\ThemeRevision\Model;
 class DefaultConfigsModel
 {
     private $default_Configs_Schema = array(
-        'version'                           => array('default' => '20260801v3'),
+        'version'                           => array('default' => '20260801v4'),
 
         // Development mode will introduce raw CSS files for easier customization and minify automatically after switching back. 
         // Make sure the "Asset" folder in plugin's root directory is WRITABLE and EXECUTABLE before switching !
@@ -85,12 +85,12 @@ class DefaultConfigsModel
         // Light Colors
         'light_palette' => array(
             // Messages & Actions
-            'brand-prim'                    => array('default' => '#3860f4'),
+            'brand-prim'                    => array('default' => '#5d801d'),
             'brand-cont'                    => array('default' => '#fff'),
-            'brand-secd'                    => array('default' => '#dae4fe'),
+            'brand-secd'                    => array('default' => '#e9f3d6'),
 
-            'info-prim'                     => array('default' => '#3860f4'),
-            'info-cont'                     => array('default' => '#d9e7ff'),
+            'info-prim'                     => array('default' => '#315e78'),
+            'info-cont'                     => array('default' => '#e2eef2'),
 
             'reminder-prim'                 => array('default' => '#be7b04'),
             'reminder-cont'                 => array('default' => '#ffed9d'),
@@ -99,23 +99,23 @@ class DefaultConfigsModel
             'warning-cont'                  => array('default' => '#ffd9d9'),
             'warning-secd'                  => array('default' => '#e79392'),
 
-            'success-prim'                  => array('default' => '#428b43'),
-            'success-cont'                  => array('default' => '#c4f7c5'),
+            'success-prim'                  => array('default' => '#55751a'),
+            'success-cont'                  => array('default' => '#e6f1d0'),
 
             // Greyscales
-            'greyscale-1'                   => array('default' => '#02021d'),
-            'greyscale-2'                   => array('default' => 'rgba(5, 12, 77, .15)'),
-            'greyscale-3'                   => array('default' => '#e4e9f0'),
-            'greyscale-4'                   => array('default' => '#f0f3f7'),
-            'greyscale-5'                   => array('default' => '#f7f9fc'),
+            'greyscale-1'                   => array('default' => '#12223b'),
+            'greyscale-2'                   => array('default' => 'rgba(18, 34, 59, .18)'),
+            'greyscale-3'                   => array('default' => '#dde3dc'),
+            'greyscale-4'                   => array('default' => '#f1f3ef'),
+            'greyscale-5'                   => array('default' => '#f7f8f5'),
             'greyscale-6'                   => array('default' => '#fff'),
 
             // Tasks
             // Grey
             'task-grey-bg'                  => array('default' => '#fff'),             
-            'task-grey-bdr'                 => array('default' => '#dce0e7'),         
-            'task-dark-grey-bg'             => array('default' => '#e7eaef'),
-            'task-dark-grey-bdr'            => array('default' => '#cfd2d9'),
+            'task-grey-bdr'                 => array('default' => '#d9dfd7'),
+            'task-dark-grey-bg'             => array('default' => '#e9ede7'),
+            'task-dark-grey-bdr'            => array('default' => '#cfd8cc'),
             // Red
             'task-pink-bg'                  => array('default' => '#ffb3cc'),          
             'task-pink-bdr'                 => array('default' => '#f99dbe'),         
@@ -137,10 +137,10 @@ class DefaultConfigsModel
             'task-lime-bg'                  => array('default' => '#e6ee9c'),
             'task-lime-bdr'                 => array('default' => '#d5db3e'),
             // Green
-            'task-light-green-bg'           => array('default' => '#dcedc8'),   
-            'task-light-green-bdr'          => array('default' => '#acdb82'),  
-            'task-green-bg'                 => array('default' => '#bdf4cb'),
-            'task-green-bdr'                => array('default' => '#87eda1'),
+            'task-light-green-bg'           => array('default' => '#e9f3d6'),
+            'task-light-green-bdr'          => array('default' => '#c7dda0'),
+            'task-green-bg'                 => array('default' => '#dcebbb'),
+            'task-green-bdr'                => array('default' => '#b6d27c'),
             // Cyan
             'task-cyan-bg'                  => array('default' => '#b7faf7'),          
             'task-cyan-bdr'                 => array('default' => '#9ae7e4'),         
@@ -167,12 +167,12 @@ class DefaultConfigsModel
         ),
         'dark_palette' => array(
             // Messages & Actions
-            'brand-prim'                    => array('default' => '#3860f4'),
-            'brand-cont'                    => array('default' => '#e7f0ff'),
-            'brand-secd'                    => array('default' => '#051646'),
+            'brand-prim'                    => array('default' => '#95c23d'),
+            'brand-cont'                    => array('default' => '#12223b'),
+            'brand-secd'                    => array('default' => '#263619'),
 
-            'info-prim'                     => array('default' => '#3860f4'),
-            'info-cont'                     => array('default' => '#d4d7ff'),
+            'info-prim'                     => array('default' => '#8dc3d3'),
+            'info-cont'                     => array('default' => '#18313d'),
 
             'reminder-prim'                 => array('default' => '#a46a01'),
             'reminder-cont'                 => array('default' => '#ffe4be'),
@@ -181,23 +181,23 @@ class DefaultConfigsModel
             'warning-cont'                  => array('default' => '#fbd0d6'),
             'warning-secd'                  => array('default' => '#450909'),
 
-            'success-prim'                  => array('default' => '#09590d'),
-            'success-cont'                  => array('default' => '#82c483'),
+            'success-prim'                  => array('default' => '#a3ce4f'),
+            'success-cont'                  => array('default' => '#223416'),
 
             // Greyscales
-            'greyscale-1'                   => array('default' => '#ccc'),
-            'greyscale-2'                   => array('default' => 'rgba(255, 255, 255, .15)'),
-            'greyscale-3'                   => array('default' => 'rgba(255, 255, 255, .043)'),
-            'greyscale-4'                   => array('default' => '#27262c'),
-            'greyscale-5'                   => array('default' => '#2b292f'),
-            'greyscale-6'                   => array('default' => '#302e35'),
+            'greyscale-1'                   => array('default' => '#e8ecf1'),
+            'greyscale-2'                   => array('default' => 'rgba(232, 236, 241, .16)'),
+            'greyscale-3'                   => array('default' => 'rgba(232, 236, 241, .08)'),
+            'greyscale-4'                   => array('default' => '#111b2a'),
+            'greyscale-5'                   => array('default' => '#172235'),
+            'greyscale-6'                   => array('default' => '#1d2a3e'),
 
             // Tasks
             // Grey
-            'task-grey-bg'                  => array('default' => '#302e35'),
-            'task-grey-bdr'                 => array('default' => 'rgba(255, 255, 255, .043)'),
-            'task-dark-grey-bg'             => array('default' => '#29272d'),
-            'task-dark-grey-bdr'            => array('default' => 'rgba(255, 255, 255, .07)'),
+            'task-grey-bg'                  => array('default' => '#1d2a3e'),
+            'task-grey-bdr'                 => array('default' => 'rgba(232, 236, 241, .08)'),
+            'task-dark-grey-bg'             => array('default' => '#172235'),
+            'task-dark-grey-bdr'            => array('default' => 'rgba(232, 236, 241, .12)'),
             // Red
             'task-pink-bg'                  => array('default' => '#995457'),
             'task-pink-bdr'                 => array('default' => '#ac6064'),
@@ -219,10 +219,10 @@ class DefaultConfigsModel
             'task-lime-bg'                  => array('default' => '#687320'),
             'task-lime-bdr'                 => array('default' => '#7b8820'),
             // Green
-            'task-light-green-bg'           => array('default' => '#528248'),
-            'task-light-green-bdr'          => array('default' => '#57934a'),
-            'task-green-bg'                 => array('default' => '#054208'),
-            'task-green-bdr'                => array('default' => '#054e09'),
+            'task-light-green-bg'           => array('default' => '#364b22'),
+            'task-light-green-bdr'          => array('default' => '#58772d'),
+            'task-green-bg'                 => array('default' => '#243815'),
+            'task-green-bdr'                => array('default' => '#486524'),
             // Cyan
             'task-cyan-bg'                  => array('default' => '#007c80'),
             'task-cyan-bdr'                 => array('default' => '#3a8e87'),
