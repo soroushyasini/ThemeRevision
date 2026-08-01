@@ -5,7 +5,7 @@ namespace Kanboard\Plugin\ThemeRevision\Model;
 class DefaultConfigsModel
 {
     private $default_Configs_Schema = array(
-        'version'                           => array('default' => '20260730v2'),
+        'version'                           => array('default' => '20260801v3'),
 
         // Development mode will introduce raw CSS files for easier customization and minify automatically after switching back. 
         // Make sure the "Asset" folder in plugin's root directory is WRITABLE and EXECUTABLE before switching !

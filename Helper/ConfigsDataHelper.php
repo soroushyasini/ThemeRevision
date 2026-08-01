@@ -114,6 +114,10 @@ class ConfigsDataHelper extends BaseHelper
             if (isset($oldConfigs['task_footer_opacity']) && abs(floatval($oldConfigs['task_footer_opacity']) - 0.08) < 0.001){
                 $mergedConfigs['task_footer_opacity'] = $defConfigs['task_footer_opacity'];
             }
+
+            if (isset($oldConfigs['corner_radius']) && trim($oldConfigs['corner_radius']) === '4px'){
+                $mergedConfigs['corner_radius'] = $defConfigs['corner_radius'];
+            }
         }
 
         return $mergedConfigs;

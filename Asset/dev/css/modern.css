@@ -223,6 +223,23 @@ body.TR .project-header {
 	box-shadow: var(--style-shadow-light);
 }
 
+body.TR .project-header > .dropdown-component,
+body.TR .project-header > .views-switcher-component {
+	flex: 0 0 auto;
+}
+
+body.TR .project-header > .filter-box-component {
+	flex: 1 1 22rem;
+	min-width: min(22rem, 100%);
+}
+
+body.TR .project-header .filter-box,
+body.TR .project-header .filter-box form,
+body.TR .project-header .input-addon {
+	width: 100%;
+	max-width: none;
+}
+
 body.TR .views {
 	display: flex;
 	align-items: center;
@@ -238,9 +255,17 @@ body.TR .views li a,
 body.TR .dropdown .action-menu {
 	display: inline-flex;
 	align-items: center;
+	gap: .4rem;
 	min-height: 2.5rem;
 	padding: .6rem .75rem;
 	border-radius: var(--tr-radius-sm);
+}
+
+body.TR .views li a i.fa,
+body.TR .dropdown .action-menu i.fa,
+body.TR .board-add-icon a i.fa,
+body.TR #modal-close-button i.fa {
+	margin-inline: 0;
 }
 
 body.TR .views li.active a,
@@ -487,8 +512,13 @@ body.TR #dropdown ul.dropdown-submenu-open #dropdown-search input {
 
 /* Board and task cards */
 body.TR #board-container {
+	max-width: 100%;
+	overflow-x: auto;
+	overflow-y: visible;
 	padding-block-end: var(--tr-space-4);
 	background: transparent;
+	overscroll-behavior-inline: contain;
+	scrollbar-gutter: stable;
 }
 
 body.TR #board {
@@ -502,6 +532,10 @@ body.TR #board th.board-column-header {
 	font-size: .9rem;
 	font-weight: 700;
 	text-transform: none;
+}
+
+body.TR #board th.board-column-header:not(.board-column-header-collapsed) {
+	min-width: 18rem;
 }
 
 body.TR #board td {
@@ -565,8 +599,94 @@ body.TR .task-board-header {
 }
 
 body.TR .task-board-title {
+	float: none;
+	clear: none;
+	margin: 0 0 var(--tr-space-2);
 	font-size: .95rem;
 	line-height: 1.45;
+}
+
+body.TR .task-board-title a {
+	padding: 0;
+	line-height: inherit;
+}
+
+/* Kanboard's compact board mode uses a separate, flatter card structure. */
+body.TR .task-board-collapsed {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--tr-space-2);
+	min-height: 2.5rem;
+	line-height: 1.4;
+}
+
+body.TR .task-board-collapsed > .dropdown {
+	flex: 0 0 auto;
+	margin: 0;
+}
+
+body.TR .task-board-collapsed > .dropdown strong {
+	display: inline-flex;
+	align-items: center;
+	min-height: 1.75rem;
+	padding: .2rem .45rem;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--tr-text) 8%, transparent);
+	font-size: var(--size-font-min);
+}
+
+body.TR .task-board-collapsed > a.js-modal-large {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.75rem;
+	height: 1.75rem;
+	border-radius: 999px;
+	opacity: .48;
+}
+
+body.TR .task-board-collapsed > a.js-modal-large:hover,
+body.TR .task-board-collapsed > a.js-modal-large:focus-visible {
+	background: var(--tr-brand-soft);
+	opacity: 1;
+	text-decoration: none;
+}
+
+body.TR .task-board-collapsed > span[title] {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 1.75rem;
+	height: 1.75rem;
+	padding-inline: .4rem;
+	border-radius: 999px;
+	background: var(--tr-brand-soft);
+	color: var(--color-brand-prim);
+	font-size: var(--size-font-min);
+	font-weight: 700;
+}
+
+body.TR .task-board-collapsed > .dropdown strong i.fa,
+body.TR .task-board-collapsed > a.js-modal-large i.fa {
+	margin-inline: 0;
+}
+
+body.TR .task-board-collapsed > a:last-child {
+	flex: 1 1 8rem;
+	min-width: 0;
+	font-weight: 700;
+	line-height: 1.45;
+}
+
+body.TR .task-board-recent .task-board-collapsed::before {
+	content: "";
+	flex: 0 0 .5rem;
+	width: .5rem;
+	height: .5rem;
+	border-radius: 999px;
+	background: var(--color-brand-prim);
+	box-shadow: 0 0 0 4px var(--tr-brand-soft);
 }
 
 body.TR .task-board-category,
@@ -686,6 +806,8 @@ body.TR #modal-overlay {
 }
 
 body.TR #modal-box {
+	padding: 0;
+	max-width: min(90rem, calc(100vw - 2rem)) !important;
 	border: var(--style-border);
 	border-radius: var(--tr-radius-lg);
 	background: var(--tr-surface);
@@ -693,7 +815,15 @@ body.TR #modal-box {
 }
 
 body.TR #modal-content {
-	padding: clamp(var(--tr-space-4), 3vw, var(--tr-space-6));
+	padding: 3.75rem clamp(var(--tr-space-4), 3vw, var(--tr-space-6)) clamp(var(--tr-space-4), 3vw, var(--tr-space-6));
+}
+
+body.TR #modal-header {
+	position: absolute;
+	z-index: 3;
+	inset-block-start: var(--tr-space-3);
+	inset-inline-end: var(--tr-space-3);
+	margin: 0;
 }
 
 body.TR #modal-close-button {
@@ -714,13 +844,45 @@ body.TR #tooltip-container {
 
 body.TR .task-form-main-column,
 body.TR .task-form-secondary-column {
-	border-right: 0;
-	border-inline-end: var(--style-border);
+	width: auto;
+	min-width: 0;
+	max-width: none;
+	margin: 0;
+	padding: 0;
+	border: 0;
 }
 
 body.TR .task-form-secondary-column {
-	padding-left: 0;
-	padding-inline-start: var(--tr-space-4);
+	padding: 0;
+}
+
+body.TR #modal-content > form {
+	padding: 0;
+	border: 0;
+	background: transparent;
+}
+
+body.TR #modal-content .task-form-container {
+	display: grid;
+	grid-template-columns: minmax(24rem, 2fr) repeat(2, minmax(15rem, 1fr));
+	align-items: start;
+	gap: var(--tr-space-6);
+}
+
+body.TR #modal-content .task-form-bottom {
+	grid-column: 1 / -1;
+	width: 100%;
+}
+
+body.TR #modal-content :where(.task-form-main-column, .task-form-secondary-column) > :where(
+	input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+	select,
+	textarea,
+	.select2-container,
+	.js-text-editor-rendered
+) {
+	width: 100% !important;
+	max-width: none;
 }
 
 body.TR #task-view .sidebar-content #task-summary {
@@ -927,21 +1089,6 @@ html[dir="rtl"] body.TR .table-list-row {
 	border-left: 0 !important;
 }
 
-html[dir="rtl"] body.TR .task-form-main-column,
-html[dir="rtl"] body.TR .task-form-secondary-column {
-	border-left: var(--style-border);
-	border-right: 0;
-}
-
-html[dir="rtl"] body.TR .task-form-secondary-column {
-	padding-right: var(--tr-space-4);
-	padding-left: 0;
-}
-
-html[dir="rtl"] body.TR #modal-content .task-form-container > *:nth-child(3) {
-	border-left: 0;
-}
-
 html[dir="rtl"] body.TR #board td:first-child,
 html[dir="rtl"] body.TR #board th:first-child {
 	padding-left: var(--tr-space-3);
@@ -1088,6 +1235,16 @@ html[dir="rtl"] body.TR .text-left {
 }
 
 /* Responsive application shell */
+@media (max-width: 1100px) {
+	body.TR #modal-content .task-form-container {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	body.TR #modal-content .task-form-main-column {
+		grid-column: 1 / -1;
+	}
+}
+
 @media (max-width: 920px) {
 	body.TR .project-header {
 		flex-wrap: wrap;
@@ -1154,7 +1311,18 @@ html[dir="rtl"] body.TR .text-left {
 
 	body.TR #modal-header {
 		inset-inline-start: var(--tr-space-3);
+		inset-inline-end: auto;
 		left: auto;
+	}
+
+	body.TR #modal-content .task-form-container {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	body.TR #modal-content .task-form-main-column,
+	body.TR #modal-content .task-form-secondary-column,
+	body.TR #modal-content .task-form-bottom {
+		grid-column: 1;
 	}
 }
 
