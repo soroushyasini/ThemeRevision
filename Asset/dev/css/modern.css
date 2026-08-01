@@ -276,6 +276,133 @@ body.TR .dropdown .action-menu:hover {
 	text-decoration: none;
 }
 
+/* Project navigation is one toolbar: a primary action, a segmented view
+ * switcher, and the filter. These overrides retire the legacy split-tab look. */
+body.TR .project-header > .dropdown-component {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+}
+
+body.TR .project-header > .dropdown-component > .dropdown > .action-menu {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--tr-space-2);
+	min-height: var(--tr-control-height);
+	padding: .65rem .8rem;
+	border: 1px solid color-mix(in srgb, var(--color-brand-prim) 28%, var(--tr-border));
+	border-radius: var(--tr-radius-sm);
+	background: var(--tr-brand-soft);
+	color: var(--color-brand-prim);
+	font-weight: 700;
+	line-height: 1.2;
+	box-shadow: none;
+}
+
+body.TR .project-header > .dropdown-component > .dropdown > .action-menu::after {
+	content: attr(aria-label);
+	order: 2;
+	max-width: 16rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+body.TR .project-header > .dropdown-component > .dropdown > .action-menu .fa-cog {
+	order: 1;
+}
+
+body.TR .project-header > .dropdown-component > .dropdown > .action-menu .fa-caret-down {
+	order: 3;
+}
+
+body.TR .project-header > .dropdown-component > .dropdown > .action-menu:hover,
+body.TR .project-header > .dropdown-component > .dropdown > .action-menu:focus-visible,
+body.TR .project-header > .dropdown-component > .dropdown > .action-menu.active-dropdown-menu {
+	border-color: var(--color-brand-prim);
+	background: var(--color-brand-prim);
+	color: var(--color-brand-cont);
+}
+
+body.TR .project-header > .views-switcher-component {
+	margin: 0;
+	padding: 3px;
+	border: var(--style-border);
+	border-radius: var(--tr-radius-md);
+	background: var(--tr-surface-subtle);
+}
+
+body.TR .project-header > .views-switcher-component > .views {
+	display: flex;
+	align-items: stretch;
+	gap: 2px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: calc(var(--tr-radius-md) - 3px);
+	background: transparent;
+	box-shadow: none;
+}
+
+body.TR .project-header .views > li,
+body.TR .project-header .views > li:first-child,
+body.TR .project-header .views > li:last-child,
+body.TR .project-header .views > li.active {
+	display: block;
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+}
+
+body.TR .project-header .views > li > a,
+body.TR .project-header .views > li.active > a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--tr-space-2);
+	min-width: 5.25rem;
+	height: auto;
+	min-height: calc(var(--tr-control-height) - 6px);
+	padding: .55rem .8rem;
+	border-radius: calc(var(--tr-radius-md) - 4px);
+	background: transparent;
+	color: var(--tr-text-muted);
+	font-weight: 650;
+	line-height: 1.2;
+	white-space: nowrap;
+	box-shadow: none;
+}
+
+body.TR .project-header .views > li > a:hover,
+body.TR .project-header .views > li > a:focus-visible {
+	background: var(--tr-surface);
+	color: var(--tr-text);
+}
+
+body.TR .project-header .views > li.active > a,
+body.TR .project-header .views > li.active > a:hover,
+body.TR .project-header .views > li.active > a:focus-visible {
+	background: var(--color-brand-prim);
+	color: var(--color-brand-cont);
+	box-shadow: var(--style-shadow-light);
+}
+
+body.TR .project-header .views > li > a i.fa {
+	margin: 0;
+	color: inherit;
+	font-size: 1rem;
+}
+
+body.TR .project-header > .filter-box-component {
+	margin: 0;
+	margin-inline-start: auto;
+}
+
 body.TR .sidebar-container {
 	gap: clamp(var(--tr-space-4), 3vw, var(--tr-space-6));
 	max-width: calc(var(--size-width-def) + var(--size-width-comp) + var(--tr-space-6));
@@ -1456,10 +1583,14 @@ html[dir="rtl"] body.TR .text-left {
 	}
 
 	body.TR .dropdown .action-menu,
-	body.TR .views-switcher-component .views li,
+	body.TR .views-switcher-component .views li a,
 	body.TR .page-header ul a {
 		min-height: var(--tr-touch-target);
 		padding: .8rem;
+	}
+
+	body.TR .project-header > .dropdown-component > .dropdown > .action-menu::after {
+		display: none;
 	}
 
 	body.TR .table-list-row {

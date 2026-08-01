@@ -19,6 +19,7 @@
         document.body.classList.add("TR");
         enhanceLogo();
         enhanceBoardEditActions();
+        enhanceProjectViewSwitcher();
         initMenu("section.sidebar-container > .sidebar");
         enhanceMetaMagik();
 
@@ -62,6 +63,12 @@
                 editAction.setAttribute("aria-label", label);
                 editAction.setAttribute("title", label);
             }
+        });
+    }
+
+    function enhanceProjectViewSwitcher() {
+        document.querySelectorAll(".project-header .views > li.active > a").forEach(function (activeView) {
+            activeView.setAttribute("aria-current", "page");
         });
     }
 
