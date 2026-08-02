@@ -49,6 +49,9 @@
             }
 
             var href = editAction.getAttribute("href");
+            var safeEditUrl = getTaskEditUrl(href);
+            editAction.setAttribute("href", safeEditUrl);
+
             var menuLinks = editAction.parentNode.querySelectorAll(".dropdown li a");
             var matchingMenuLink = Array.prototype.find.call(menuLinks, function (menuLink) {
                 return menuLink.getAttribute("href") === href;
@@ -63,7 +66,26 @@
                 editAction.setAttribute("aria-label", label);
                 editAction.setAttribute("title", label);
             }
+
+            matchingMenuLink.setAttribute("href", safeEditUrl);
         });
+    }
+
+    function getTaskEditUrl(href) {
+        var url;
+
+        try {
+            url = new URL(href, document.baseURI);
+        } catch (error) {
+            return href;
+        }
+
+        if (url.origin !== window.location.origin || /\/theme-revision\/task\/\d+\/edit$/.test(url.pathname) || !/\/task\/\d+\/edit$/.test(url.pathname)) {
+            return href;
+        }
+
+        url.pathname = url.pathname.replace(/\/task\/(\d+)\/edit$/, "/theme-revision/task/$1/edit");
+        return url.pathname + url.search + url.hash;
     }
 
     function enhanceProjectViewSwitcher() {

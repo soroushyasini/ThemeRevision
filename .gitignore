@@ -1,1 +1,6 @@
 .DS_Store
+
+# Local/generated tooling artifacts
+/node_modules/
+/outputs/
+/build_matching_workbook.mjs

@@ -24,6 +24,8 @@ class Plugin extends Base
 
 		// admin config UI
 		$this->route->addRoute('settings/themerevision', 'PluginConfigsController', 'show', 'ThemeRevision');
+		$this->route->addRoute('theme-revision/task/:task_id/edit', 'TaskEditController', 'edit', 'ThemeRevision');
+		$this->hook->on('controller:task-modification:form:default', array($this, 'redirectDirectTaskEdit'));
 		$this->template->hook->attach('template:config:sidebar', 'ThemeRevision:settings/sidebar');
 
 		// set CSP
@@ -84,7 +86,7 @@ class Plugin extends Base
 	}
 
 	public function getPluginVersion() { 	 
-		return '1.2.7';
+		return '1.2.8';
 	}
 
 	public function getPluginDescription() { 
@@ -93,6 +95,25 @@ class Plugin extends Base
 	
 	public function getPluginHomepage() { 	 
 		return 'https://github.com/greyaz/ThemeRevision'; 
+	}
+
+	public function redirectDirectTaskEdit(array $defaultValues) {
+		if (
+			$this->request->isAjax()
+			|| $this->request->isPost()
+			|| strcasecmp($this->router->getAction(), 'edit') !== 0
+			|| strcasecmp($this->router->getPlugin(), 'ThemeRevision') === 0
+			|| empty($defaultValues['id'])
+		) {
+			return array();
+		}
+
+		$this->response->redirect($this->helper->url->to('TaskEditController', 'edit', array(
+			'plugin' => 'ThemeRevision',
+			'task_id' => $defaultValues['id'],
+		)));
+
+		return array();
 	}
 
 	private function loadConfigs() {
