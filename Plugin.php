@@ -86,7 +86,7 @@ class Plugin extends Base
 	}
 
 	public function getPluginVersion() { 	 
-		return '1.2.8';
+		return '1.2.9';
 	}
 
 	public function getPluginDescription() { 
@@ -97,20 +97,20 @@ class Plugin extends Base
 		return 'https://github.com/greyaz/ThemeRevision'; 
 	}
 
-	public function redirectDirectTaskEdit(array $defaultValues) {
+	public function redirectDirectTaskEdit(array $default_values) {
 		if (
 			$this->request->isAjax()
 			|| $this->request->isPost()
 			|| strcasecmp($this->router->getAction(), 'edit') !== 0
 			|| strcasecmp($this->router->getPlugin(), 'ThemeRevision') === 0
-			|| empty($defaultValues['id'])
+			|| empty($default_values['id'])
 		) {
 			return array();
 		}
 
 		$this->response->redirect($this->helper->url->to('TaskEditController', 'edit', array(
 			'plugin' => 'ThemeRevision',
-			'task_id' => $defaultValues['id'],
+			'task_id' => $default_values['id'],
 		)));
 
 		return array();
